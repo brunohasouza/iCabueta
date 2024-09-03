@@ -1,5 +1,6 @@
 package br.com.bhas.icabueta.model.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,6 @@ public class Denuncia {
     private Cadeira cadeira;
     private Professor professor;
     private MetodoFila metodoFila;
-
     private Estudante denunciante;
     private List<Estudante> denunciados;
 
@@ -39,11 +39,11 @@ public class Denuncia {
         this.turno = turno;
     }
 
-    public String getDescricaoDoOcorrido() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricaoDoOcorrido(String descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
@@ -77,5 +77,17 @@ public class Denuncia {
 
     public void setMetodoFila(MetodoFila metodoFila) {
         this.metodoFila = metodoFila;
+    }
+
+    public List<Estudante> getDenunciados() {
+        return denunciados;
+    }
+
+    public void setDenunciados(List<Estudante> denunciados) {
+        this.denunciados = denunciados;
+    }
+
+    public String getDataFormatada() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(this.data);
     }
 }

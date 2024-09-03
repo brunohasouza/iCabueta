@@ -12,4 +12,9 @@
             <rtexprvalue>false</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>carrega-denuncias</name>
+        <tag-class>br.com.bhas.icabueta.controllers.tags.CarregaDenunciaTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>

@@ -1,9 +1,11 @@
 package br.com.bhas.icabueta.model.repositories;
 
+import br.com.bhas.icabueta.model.entities.Cadeira;
 import br.com.bhas.icabueta.model.entities.Denuncia;
 import br.com.bhas.icabueta.model.entities.Estudante;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DenunciaRepository {
@@ -11,6 +13,24 @@ public class DenunciaRepository {
 
     static {
         denuncias = new ArrayList<>();
+
+        Denuncia denuncia = new Denuncia();
+        List<Estudante> denunciados = new ArrayList<>();
+
+        denunciados.add(EstudanteRepository.read(1));
+        denunciados.add(EstudanteRepository.read(2));
+
+        denuncia.setDenunciante(EstudanteRepository.read(3));
+        denuncia.setDenunciados(denunciados);
+        denuncia.setCadeira(CadeiraRepository.read(1));
+        denuncia.setTurno("noite");
+        denuncia.setProfessor(ProfessorRepository.read(1));
+        denuncia.setCodigo(1);
+        denuncia.setMetodoFila(MetodoFilaRepository.read(1));
+        denuncia.setDescricao("Filaram de mim e ainda tiraram 0.");
+        denuncia.setData(new Date());
+
+        denuncias.add(denuncia);
     }
 
     public static void create(Denuncia d) {
@@ -56,14 +76,14 @@ public class DenunciaRepository {
     }
 
     public static List<Denuncia> filterBy(Estudante e) {
-        List<Denuncia> denuncias = new ArrayList<>();
+        List<Denuncia> denunciasFiltradas = new ArrayList<>();
 
         for (Denuncia d: denuncias) {
             if (d.getDenunciante().getCodigo() == e.getCodigo()) {
-                denuncias.add(d);
+                denunciasFiltradas.add(d);
             }
         }
 
-        return denuncias;
+        return denunciasFiltradas;
     }
 }

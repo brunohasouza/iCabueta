@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav nav-pills flex-grow-1">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Denunciar</a>
+                    <a class="nav-link" aria-current="page" href="criar-denuncia.jsp">Denunciar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Perfil</a>
