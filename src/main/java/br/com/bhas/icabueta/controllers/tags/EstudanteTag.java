@@ -1,13 +1,14 @@
 package br.com.bhas.icabueta.controllers.tags;
 
 import br.com.bhas.icabueta.model.entities.Estudante;
-import br.com.bhas.icabueta.model.repositories.EstudanteRepository;
-import jakarta.servlet.jsp.JspException;
-import jakarta.servlet.jsp.PageContext;
-import jakarta.servlet.jsp.tagext.SimpleTagSupport;
+import br.com.bhas.icabueta.model.repositories.EstudanteRepository;;
 
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EstudanteTag extends SimpleTagSupport {
     private String codigo;
@@ -15,13 +16,13 @@ public class EstudanteTag extends SimpleTagSupport {
     public void doTag() throws JspException, IOException {
         super.doTag();
 
-        if (codigo == null || codigo.isEmpty()) {
-            List<Estudante> estudantes = EstudanteRepository.readAll();
-            getJspContext().setAttribute("estudantes", estudantes, PageContext.REQUEST_SCOPE);
-        } else {
-            Estudante e = EstudanteRepository.read(Integer.parseInt(codigo));
-            getJspContext().setAttribute("estudante", e, PageContext.REQUEST_SCOPE);
-        }
+        List<Estudante> estudantes = EstudanteRepository
+                .readAll()
+                .stream()
+                .filter(estudante -> estudante.getCodigo() != Integer.parseInt(this.codigo))
+                .collect(Collectors.toList());
+
+        getJspContext().setAttribute("estudantes", estudantes, PageContext.REQUEST_SCOPE);
     }
 
     public void setCodigo(String codigo) {

@@ -43,7 +43,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger">
+                        <div class="alert alert-secondary mb-0">
                             <p class="h4 mb-0">${sessionScope.msg}</p>
                         </div>
                         <c:remove var="msg" scope="session"/>

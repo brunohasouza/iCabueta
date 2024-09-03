@@ -23,18 +23,17 @@
                         <h2 class="card-title mb-0">Denunciar</h2>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <input type="hidden" value="${sessionScope.eLogado.codigo}" name="codigo">
+                        <form method="post" action="denuncia">
+                            <icabueta:setup-denuncia codigo="${sessionScope.eLogado.codigo}" />
+                            <input type="hidden" value="${sessionScope.eLogado.codigo}" name="denunciante">
                             <div class="container-fluid px-0">
                                 <div class="row g-3">
                                     <div class="col-12 col-md-6">
-                                        <label class="form-label" for="select-estudante">Estudante(s)</label>
-                                        <select class="form-select" id="select-estudante" required name="estudantes"></select>
-                                    </div>
-                                    <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-cadeira">Cadeira</label>
                                         <select class="form-select" id="select-cadeira" required name="cadeira">
-
+                                            <c:forEach var="cadeira" items="${cadeiras}">
+                                                <option value="${cadeira.codigo}">${cadeira.nome}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -48,20 +47,39 @@
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-professor">Professor</label>
                                         <select class="form-select" id="select-professor" required name="professor">
+                                            <c:forEach var="professor" items="${professores}">
+                                                <option value="${professor.codigo}">${professor.nome}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-metodo">Método</label>
                                         <select class="form-select" id="select-metodo" required name="metodo-fila">
+                                            <c:forEach var="metodo" items="${metodosFila}">
+                                                <option value="${metodo.codigo}">${metodo.descricaoCurta}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-data">Data</label>
-                                        <input class="form-control" id="select-data" type="date" name="data">
+                                        <input class="form-control" id="select-data" type="date" name="data" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" for="select-descricao">Descrição</label>
-                                        <textarea class="form-control" id="select-descricao" name="descricao"></textarea>
+                                        <textarea class="form-control" id="select-descricao" name="descricao" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="form-label">Estudante(s)</p>
+                                        <div class="card">
+                                            <div class="card-body px-0">
+                                                <c:forEach var="estudante" items="${estudantes}">
+                                                    <div class="form-check">
+                                                        <input class="form-input-check" id="estudante-${estudante.codigo}" type="checkbox" name="estudantes" value="${estudante.codigo}">
+                                                        <label class="form-label-check" for="estudante-${estudante.codigo}">${estudante.nome}</label>
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary" style="width: 100%;">Criar</button>
