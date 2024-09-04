@@ -13,8 +13,29 @@ public class MetodoFilaRepository {
 
         MetodoFila m = new MetodoFila();
         m.setCodigo(1);
-        m.setDescricaoCurta("Fila entre os dedos.");
+        m.setDescricaoCurta("Entre os dedos");
         m.setDescricaoLonga("Os estudantes colocam as filas entre os dedos das mãos ou dos pés.");
+
+        metodos.add(m);
+
+        m = new MetodoFila();
+        m.setCodigo(2);
+        m.setDescricaoCurta("Escrita na borracha");
+        m.setDescricaoLonga("Os estudantes escrevem as informações e fórmulas na borracha para consultar durante a prova.");
+
+        metodos.add(m);
+
+        m = new MetodoFila();
+        m.setCodigo(3);
+        m.setDescricaoCurta("Código morse");
+        m.setDescricaoLonga("Alunos fazem sons com a caneta para se comunicarem por código morse.");
+
+        metodos.add(m);
+
+        m = new MetodoFila();
+        m.setCodigo(4);
+        m.setDescricaoCurta("Código morse");
+        m.setDescricaoLonga("Alunos fazem sons com a caneta para se comunicarem por código morse.");
 
         metodos.add(m);
     }

@@ -13,24 +13,50 @@ public class DenunciaRepository {
 
     static {
         denuncias = new ArrayList<>();
+        List<String> turnos = new ArrayList<>();
+        turnos.add("manha");
+        turnos.add("tarde");
+        turnos.add("noite");
+        int[] estudantes = { 3, 4, 5 };
+        int lastIndex = 1;
 
-        Denuncia denuncia = new Denuncia();
-        List<Estudante> denunciados = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            Denuncia denuncia = new Denuncia();
 
-        denunciados.add(EstudanteRepository.read(1));
-        denunciados.add(EstudanteRepository.read(2));
+            int codigo = i + 1;
+            int sizeProfessor = ProfessorRepository.readAll().size();
+            int sizeCadeira = CadeiraRepository.readAll().size();
+            int sizeMetodo = MetodoFilaRepository.readAll().size();
+            int limit = estudantes[i % estudantes.length];
+            Date data = new Date();
+            data.setDate(20 - i);
 
-        denuncia.setDenunciante(EstudanteRepository.read(3));
-        denuncia.setDenunciados(denunciados);
-        denuncia.setCadeira(CadeiraRepository.read(1));
-        denuncia.setTurno("noite");
-        denuncia.setProfessor(ProfessorRepository.read(1));
-        denuncia.setCodigo(1);
-        denuncia.setMetodoFila(MetodoFilaRepository.read(1));
-        denuncia.setDescricao("Filaram de mim e ainda tiraram 0.");
-        denuncia.setData(new Date());
+            List<Estudante> denunciados = new ArrayList<>();
 
-        denuncias.add(denuncia);
+            for (int j = 0; j < limit; j++ ) {
+                if (j + 1 < limit) {
+                    denunciados.add(EstudanteRepository.read(lastIndex));
+                }
+
+                if (lastIndex == EstudanteRepository.readAll().size()) {
+                    lastIndex = 1;
+                } else {
+                    lastIndex += 1;
+                }
+            }
+
+            denuncia.setDenunciados(denunciados);
+            denuncia.setDenunciante(EstudanteRepository.read(lastIndex));
+            denuncia.setCodigo(codigo);
+            denuncia.setData(data);
+            denuncia.setTurno(turnos.get(i % turnos.size()));
+            denuncia.setProfessor(ProfessorRepository.read((i % sizeProfessor) + 1));
+            denuncia.setCadeira(CadeiraRepository.read((i % sizeCadeira) + 1));
+            denuncia.setMetodoFila(MetodoFilaRepository.read((i % sizeMetodo) + 1));
+            denuncia.setDescricao("Lorem ipsum iaculis torquent lacinia elementum adipiscing dapibus, cras turpis fermentum nibh magna platea, consequat elementum tortor platea cursus praesent. turpis tincidunt dictum vel metus quis cubilia accumsan.");
+
+            denuncias.add(denuncia);
+        }
     }
 
     public static void create(Denuncia d) {

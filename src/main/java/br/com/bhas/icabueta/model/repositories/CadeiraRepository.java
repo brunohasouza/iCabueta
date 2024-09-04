@@ -13,7 +13,7 @@ public class CadeiraRepository {
 
         Cadeira c = new Cadeira();
         c.setCodigo(1);
-        c.setNome("Desenvolvimento web II");
+        c.setNome("Desenvolvimento Web II");
         c.setAno(2024);
         c.setSemestre(1);
         c.setDescricao("Desenvolvimento web com Java Servlets e JSP.");
@@ -26,6 +26,24 @@ public class CadeiraRepository {
         c.setAno(2024);
         c.setSemestre(1);
         c.setDescricao("Mais uma matéria sobre engenharia de software.");
+
+        cadeiras.add(c);
+
+        c = new Cadeira();
+        c.setCodigo(3);
+        c.setNome("Metodologia Científica");
+        c.setAno(2024);
+        c.setSemestre(1);
+        c.setDescricao("Matéria pra aprender a escrever artigo.");
+
+        cadeiras.add(c);
+
+        c = new Cadeira();
+        c.setCodigo(4);
+        c.setNome("Padrões de Projetos Orientado a Objetos");
+        c.setAno(2024);
+        c.setSemestre(1);
+        c.setDescricao("Muito padrão legal, mas você não vai usar metade deles na sua vida.");
 
         cadeiras.add(c);
     }
