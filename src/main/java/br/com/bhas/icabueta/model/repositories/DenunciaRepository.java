@@ -3,6 +3,7 @@ package br.com.bhas.icabueta.model.repositories;
 import br.com.bhas.icabueta.model.entities.Cadeira;
 import br.com.bhas.icabueta.model.entities.Denuncia;
 import br.com.bhas.icabueta.model.entities.Estudante;
+import br.com.bhas.icabueta.model.entities.Professor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -106,6 +107,18 @@ public class DenunciaRepository {
 
         for (Denuncia d: denuncias) {
             if (d.getDenunciante().getCodigo() == e.getCodigo()) {
+                denunciasFiltradas.add(d);
+            }
+        }
+
+        return denunciasFiltradas;
+    }
+
+    public static List<Denuncia> filterBy(Professor p) {
+        List<Denuncia> denunciasFiltradas = new ArrayList<>();
+
+        for (Denuncia d: denuncias) {
+            if (d.getProfessor().getCodigo() == p.getCodigo()) {
                 denunciasFiltradas.add(d);
             }
         }

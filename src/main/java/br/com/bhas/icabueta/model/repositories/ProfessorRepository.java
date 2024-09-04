@@ -15,7 +15,7 @@ public class ProfessorRepository {
         p.setCodigo(1);
         p.setNome("Eduardo de Melo Vasconcelos");
         p.setEmail("eduardo@ifpe.com");
-        p.setSenha("123456");
+        p.setSenha("321321");
 
         professores.add(p);
 
@@ -23,15 +23,7 @@ public class ProfessorRepository {
         p.setCodigo(2);
         p.setNome("Tatiane Catarina Fogaça");
         p.setEmail("tatiane@ifpe.com");
-        p.setSenha("654321");
-
-        professores.add(p);
-
-        p = new Professor();
-        p.setCodigo(3);
-        p.setNome("Guilherme Gustavo Ribeiro");
-        p.setEmail("guilherme@ifpe.com");
-        p.setSenha("123123");
+        p.setSenha("321321");
 
         professores.add(p);
     }

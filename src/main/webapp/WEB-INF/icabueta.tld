@@ -16,6 +16,12 @@
         <name>carrega-denuncias</name>
         <tag-class>br.com.bhas.icabueta.controllers.tags.CarregaDenunciaTag</tag-class>
         <body-content>empty</body-content>
+        <attribute>
+            <name>filtro</name>
+            <type>br.com.bhas.icabueta.model.entities.DenunciaFiltro</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
     <tag>
         <name>setup-denuncia</name>

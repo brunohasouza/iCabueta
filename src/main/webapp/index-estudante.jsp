@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="icabueta" uri="/WEB-INF/icabueta.tld" %>
+<%@ page import="br.com.bhas.icabueta.model.entities.DenunciaFiltro" %>
 <html data-bs-theme="dark">
 <icabueta:head titulo="Estudante"/>
 <body>
@@ -15,7 +16,7 @@
         <h1 class="display-1 text-center mt-4 mb-4">iCabueta</h1>
         <jsp:directive.include file="components/menu-estudante.jsp"/>
     </div>
-    <icabueta:carrega-denuncias />
+    <icabueta:carrega-denuncias filtro="${DenunciaFiltro.ESTUDANTE}"/>
     <div class="container">
         <table class="table table-bordered table-striped table-hover m-0">
             <tr>
