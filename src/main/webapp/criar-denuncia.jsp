@@ -24,12 +24,14 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="denuncia">
+                            <icabueta:setup-denuncia codigo="${sessionScope.eLogado.codigo}"/>
                             <input type="hidden" value="${sessionScope.eLogado.codigo}" name="denunciante">
                             <div class="container-fluid px-0">
                                 <div class="row g-3">
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-cadeira">Cadeira</label>
                                         <select class="form-select" id="select-cadeira" required name="cadeira">
+                                            <option value="" disabled selected>Selecione uma cadeira</option>
                                             <c:forEach var="cadeira" items="${cadeiras}">
                                                 <option value="${cadeira.codigo}">${cadeira.nome}</option>
                                             </c:forEach>
@@ -38,6 +40,7 @@
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-turno">Turno</label>
                                         <select class="form-select" id="select-turno" required name="turno">
+                                            <option value="" disabled selected>Selecione um turno</option>
                                             <option value="manha">Manhã</option>
                                             <option value="tarde">Tarde</option>
                                             <option value="noite">Noite</option>
@@ -46,6 +49,7 @@
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-professor">Professor</label>
                                         <select class="form-select" id="select-professor" required name="professor">
+                                            <option value="" disabled selected>Selecione um professor</option>
                                             <c:forEach var="professor" items="${professores}">
                                                 <option value="${professor.codigo}">${professor.nome}</option>
                                             </c:forEach>
@@ -54,6 +58,7 @@
                                     <div class="col-12 col-md-6">
                                         <label class="form-label" for="select-metodo">Método</label>
                                         <select class="form-select" id="select-metodo" required name="metodo-fila">
+                                            <option value="" disabled selected>Selecione um método</option>
                                             <c:forEach var="metodo" items="${metodosFila}">
                                                 <option value="${metodo.codigo}">${metodo.descricaoCurta}</option>
                                             </c:forEach>

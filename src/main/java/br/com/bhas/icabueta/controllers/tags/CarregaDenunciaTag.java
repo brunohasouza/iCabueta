@@ -8,6 +8,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 public class CarregaDenunciaTag extends SimpleTagSupport {
@@ -17,6 +18,8 @@ public class CarregaDenunciaTag extends SimpleTagSupport {
 
         Estudante estudante = (Estudante) getJspContext().getAttribute("eLogado", PageContext.SESSION_SCOPE);
         List<Denuncia> denuncias = DenunciaRepository.filterBy(estudante);
+        denuncias.sort(Comparator.comparing(Denuncia::getData).reversed());
+
         getJspContext().setAttribute("denuncias", denuncias, PageContext.PAGE_SCOPE);
     }
 }

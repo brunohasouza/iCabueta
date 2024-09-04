@@ -31,13 +31,6 @@ public class MetodoFilaRepository {
         m.setDescricaoLonga("Alunos fazem sons com a caneta para se comunicarem por código morse.");
 
         metodos.add(m);
-
-        m = new MetodoFila();
-        m.setCodigo(4);
-        m.setDescricaoCurta("Código morse");
-        m.setDescricaoLonga("Alunos fazem sons com a caneta para se comunicarem por código morse.");
-
-        metodos.add(m);
     }
 
     public static void create(MetodoFila m) {

@@ -29,7 +29,7 @@ public class DenunciaRepository {
             int sizeMetodo = MetodoFilaRepository.readAll().size();
             int limit = estudantes[i % estudantes.length];
             Date data = new Date();
-            data.setDate(20 - i);
+            data.setDate(i + 1);
 
             List<Estudante> denunciados = new ArrayList<>();
 

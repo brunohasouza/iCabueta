@@ -30,6 +30,7 @@ public class DenunciaController extends HttpServlet {
         String cData = req.getParameter("data");
         String[] cEstudantes = req.getParameterValues("estudantes");
 
+        int codigo = DenunciaRepository.readAll().size() + 1;
         Cadeira cadeira = CadeiraRepository.read(Integer.parseInt(cCadeira));
         Professor professor = ProfessorRepository.read(Integer.parseInt(cProfessor));
         MetodoFila metodoFila = MetodoFilaRepository.read(Integer.parseInt(cMetodo));
@@ -45,6 +46,7 @@ public class DenunciaController extends HttpServlet {
 
         Instant instant = data.atStartOfDay(ZoneId.systemDefault()).toInstant();
 
+        denuncia.setCodigo(codigo);
         denuncia.setData(Date.from(instant));
         denuncia.setDescricao(descricao);
         denuncia.setTurno(turno);
