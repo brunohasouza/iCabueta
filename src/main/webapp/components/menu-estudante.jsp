@@ -19,7 +19,7 @@
                     <a class="nav-link" aria-current="page" href="criar-denuncia.jsp">Denunciar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
+                    <a class="nav-link" href="perfil-estudante.jsp">Perfil</a>
                 </li>
             </ul>
             <div class="d-flex gap-3 align-items-center">

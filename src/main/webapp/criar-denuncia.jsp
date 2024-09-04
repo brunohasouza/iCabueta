@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="icabueta" uri="/WEB-INF/icabueta.tld" %>
 <html data-bs-theme="dark">
-<icabueta:head titulo="Estudante"/>
+<icabueta:head titulo="Criar denúncia"/>
 <body>
     <div class="container mb-3">
         <h1 class="display-1 text-center mt-4 mb-4">iCabueta</h1>
@@ -24,7 +24,6 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="denuncia">
-                            <icabueta:setup-denuncia codigo="${sessionScope.eLogado.codigo}" />
                             <input type="hidden" value="${sessionScope.eLogado.codigo}" name="denunciante">
                             <div class="container-fluid px-0">
                                 <div class="row g-3">
