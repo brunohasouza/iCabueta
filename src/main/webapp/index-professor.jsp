@@ -11,10 +11,10 @@
 <html data-bs-theme="dark">
 <icabueta:head titulo="Professor"/>
 <body>
-<div class="container">
-    <h1 class="display-1 text-center mt-4 mb-4">iCabueta</h1>
-    <jsp:directive.include file="components/menu-professor.jsp"/>
-</div>
+    <div class="container">
+        <h1 class="display-1 text-center mt-4 mb-4">iCabueta</h1>
+        <jsp:directive.include file="components/menu-professor.jsp"/>
+    </div>
 
 </body>
 </html>

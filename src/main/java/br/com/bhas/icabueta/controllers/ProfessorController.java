@@ -1,7 +1,7 @@
 package br.com.bhas.icabueta.controllers;
 
-import br.com.bhas.icabueta.model.entities.Estudante;
-import br.com.bhas.icabueta.model.repositories.EstudanteRepository;
+import br.com.bhas.icabueta.model.entities.Professor;
+import br.com.bhas.icabueta.model.repositories.ProfessorRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-@WebServlet(name = "EstudanteController", value = {"/estudante/*"})
-public class EstudanteController extends HttpServlet {
+@WebServlet(name = "ProfessorController", value = {"/professor/*"})
+public class ProfessorController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getPathInfo();
@@ -22,21 +21,17 @@ public class EstudanteController extends HttpServlet {
         if (path[1].equals("atualizar")) {
             String nome = req.getParameter("nome");
             String email = req.getParameter("email");
-            int anoEntrada = Integer.parseInt(req.getParameter("ano-entrada"));
             String senha = req.getParameter("senha");
 
             HttpSession session = req.getSession();
+            Professor professor = (Professor) session.getAttribute("pLogado");
+            professor.setNome(nome);
+            professor.setEmail(email);
+            professor.setSenha(senha);
 
-            Estudante estudante = (Estudante) session.getAttribute("eLogado");
-            estudante.setNome(nome);
-            estudante.setEmail(email);
-            estudante.setAnoEntrada(anoEntrada);
-            estudante.setSenha(senha);
-
-            EstudanteRepository.update(estudante);
-
-            session.setAttribute("msg", "Perfil atualizado com sucesso");
-            resp.sendRedirect(req.getContextPath() + "/index-estudante.jsp");
+            ProfessorRepository.update(professor);
+            session.setAttribute("msg", "Professor atualizado com sucesso");
+            resp.sendRedirect(req.getContextPath() + "/index-professor.jsp");
         }
     }
 }

@@ -16,11 +16,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav nav-pills flex-grow-1">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
+                    <a class="nav-link" href="perfil-professor.jsp">Perfil</a>
                 </li>
             </ul>
             <div class="d-flex gap-3 align-items-center">
-                <p class="h5 mb-0">${sessionScope.pLogado.nome}</p>
+                <p class="h5 mb-0">Olá, ${sessionScope.pLogado.nome}</p>
                 <a class="btn btn-outline-secondary btn-sm" href="professores/logout" class="link">Sair</a>
             </div>
         </div>
@@ -40,8 +40,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger">
-                            <p class="h4 mb-0">${sessionScope.msg}</p>
+                        <div class="alert alert-secondary mb-0">
+                            <p class="h5 mb-0">${sessionScope.msg}</p>
                         </div>
                         <c:remove var="msg" scope="session"/>
                     </div>

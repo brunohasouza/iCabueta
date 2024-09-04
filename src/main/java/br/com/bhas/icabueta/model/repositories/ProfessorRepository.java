@@ -18,6 +18,13 @@ public class ProfessorRepository {
         p.setSenha("123456");
 
         professores.add(p);
+
+        p.setCodigo(2);
+        p.setNome("Otávio Luiz Silveira");
+        p.setEmail("professor1@email.com");
+        p.setSenha("123123");
+
+        professores.add(p);
     }
 
     public static void create(Professor p) {
