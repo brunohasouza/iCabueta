@@ -18,22 +18,33 @@
     </div>
     <icabueta:carrega-denuncias filtro="${DenunciaFiltro.ESTUDANTE}"/>
     <div class="container">
-        <table class="table table-bordered table-striped table-hover m-0">
-            <tr>
-                <th>Código</th>
-                <th>Cadeira</th>
-                <th>Método Fila</th>
-                <th>Data</th>
-            </tr>
-            <c:forEach var="denuncia" items="${pageScope.denuncias}">
-                <tr class="align-middle">
-                    <td>${denuncia.codigo}</td>
-                    <td>${denuncia.cadeira.nome}</td>
-                    <td>${denuncia.metodoFila.descricaoCurta}</td>
-                    <td>${denuncia.data}</td>
-                </tr>
-            </c:forEach>
-        </table>
+        <c:choose>
+            <c:when test="${denuncias.size() > 0}">
+                <table class="table table-bordered table-striped table-hover m-0">
+                    <tr>
+                        <th>Código</th>
+                        <th>Cadeira</th>
+                        <th>Método Fila</th>
+                        <th>Data</th>
+                        <th>Detalhes</th>
+                    </tr>
+                    <c:forEach var="denuncia" items="${pageScope.denuncias}">
+                        <tr class="align-middle">
+                            <td>${denuncia.codigo}</td>
+                            <td>${denuncia.cadeira.nome}</td>
+                            <td>${denuncia.metodoFila.descricaoCurta}</td>
+                            <td>${denuncia.data}</td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-primary" href="detalhes-denuncia.jsp?codigo=${denuncia.codigo}">Detalhes</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:when>
+            <c:otherwise>
+                <div class="alert alert-secondary">Nenhuma denúncia encontrada</div>
+            </c:otherwise>
+        </c:choose>
     </div>
 </body>
 </html>
