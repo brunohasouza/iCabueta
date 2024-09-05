@@ -125,4 +125,19 @@ public class DenunciaRepository {
 
         return denunciasFiltradas;
     }
+
+    public static List<Denuncia> filterBy(Estudante denunciado, List<Denuncia> denuncias) {
+        List<Denuncia> denunciasFiltradas = new ArrayList<>();
+
+        for (Denuncia denuncia : denuncias) {
+            for (Estudante d : denuncia.getDenunciados()) {
+                if (denunciado.getCodigo() == d.getCodigo()) {
+                    denunciasFiltradas.add(denuncia);
+                }
+            }
+        }
+
+
+        return denunciasFiltradas;
+    }
 }

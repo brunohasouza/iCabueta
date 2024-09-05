@@ -11,21 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EstudanteTag extends SimpleTagSupport {
-    private String codigo;
     @Override
     public void doTag() throws JspException, IOException {
         super.doTag();
 
-        List<Estudante> estudantes = EstudanteRepository
-                .readAll()
-                .stream()
-                .filter(estudante -> estudante.getCodigo() != Integer.parseInt(this.codigo))
-                .collect(Collectors.toList());
+        List<Estudante> estudantes = EstudanteRepository.readAll();
 
         getJspContext().setAttribute("estudantes", estudantes, PageContext.REQUEST_SCOPE);
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 }

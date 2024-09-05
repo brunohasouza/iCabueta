@@ -16,8 +16,37 @@
         <h1 class="display-1 text-center mt-4 mb-4">iCabueta</h1>
         <jsp:directive.include file="components/menu-professor.jsp"/>
     </div>
-    <icabueta:carrega-denuncias filtro="${DenunciaFiltro.PROFESSOR}"/>
+    <icabueta:carrega-estudantes/>
+    <c:choose>
+        <c:when test="${param.denunciante != null || param.denunciado != null}">
+            <icabueta:carrega-denuncias filtro="${DenunciaFiltro.FILTRO}" denunciado="${param.denunciado}" denunciante="${param.denunciante}"/>
+        </c:when>
+        <c:otherwise>
+            <icabueta:carrega-denuncias filtro="${DenunciaFiltro.PROFESSOR}"/>
+        </c:otherwise>
+    </c:choose>
     <div class="container">
+        <form method="get" class="row justify-content-end pt-3">
+            <div class="col col-auto">
+                <select name="denunciante" class="form-select" value="${param.denunciante}">
+                    <option ${param.denunciante == null ? "selected" : ""} value="">Denunciante</option>
+                    <c:forEach var="estudante" items="${estudantes}">
+                        <option ${param.denunciante != null && param.denunciante == estudante.codigo ? "selected" : ""} value="${estudante.codigo}">${estudante.nome}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="col col-auto">
+                <select name="denunciado" class="form-select" value="${param.denunciado}">
+                    <option selected value="">Denunciado</option>
+                    <c:forEach var="estudante" items="${estudantes}">
+                        <option ${param.denunciado != null && param.denunciado == estudante.codigo ? "selected" : ""} value="${estudante.codigo}">${estudante.nome}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="col col-auto">
+                <button class="btn btn-primary" type="submit">Filtrar</button>
+            </div>
+        </form>
         <table class="table table-bordered table-striped table-hover m-0">
             <tr>
                 <th>Código</th>
